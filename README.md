@@ -1,4 +1,4 @@
-#Event Ticketing Management Platform
+##Event Ticketing Management Platform
 Production-grade event booking system with transaction-based concurrency control, role-based authentication, and comprehensive event lifecycle management.
 #Project Overview
 Full-stack ticketing platform enabling event organizers to create, manage, and publish events while providing attendees with a secure booking interface. The system implements database transactions to prevent race conditions during concurrent ticket purchases—a critical requirement for real-world booking systems.
