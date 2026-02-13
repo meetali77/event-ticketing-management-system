@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Settings</title>
+    <link rel="stylesheet" href="site-setting.css">
+</head>
+<body class="bg-slate-200">
+    <h1 class="text-black text-center text-2xl font-bold mt-4">Site Settings Page</h1>
+
+    <form id="website-settings-form" action="/update-settings" method="POST">
+        <div class="website-name-container">
+            <label for="website-name" class="block text-sm font-medium text-gray-700">Site Name</label>
+            <input type="text" id="website-name" name="site_name" value="<%= site_name %>" required class="mt-1 block w-full border border-black rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+        </div>
+      
+        <div class="website-description-form move-left">
+            <label for="website-description" class="block text-sm font-medium text-gray-700">Site Description</label>
+            <textarea id="website-description" name="site_description" required class="mt-1 block w-full border border-black rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"><%= site_description %></textarea></textarea>
+        </div>
+      
+        <div class="text-center mt-4">
+            <button type="submit" class="text-white bg-gradient-to-r from-black to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Update Settings</button>
+        </div>
+      </form>
+
+    </br>
+    <a href="/organiser">
+        <button type="button" class="text-white bg-gradient-to-r from-black to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Return</button>
+    </a>    
+</body>
+</html>

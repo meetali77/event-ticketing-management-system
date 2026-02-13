@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Browse available events for attendees with details such as description, date, ticket availability, and prices."
+    />
+    <title>Attendee Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f8f9fa;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+      }
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      caption {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #555;
+      }
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+      th {
+        background-color: #007bff;
+        color: #fff;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      tr:hover {
+        background-color: #e9ecef;
+        cursor: pointer;
+      }
+      .no-events {
+        text-align: center;
+        margin-top: 20px;
+        color: #888;
+        font-size: 1.1rem;
+      }
+      .button-container {
+        display: flex;
+        gap: 10px;
+      }
+      .buy-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 8px 12px;
+        border-radius: 5px;
+      }
+      .buy-button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Notification styling */
+      .notification {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid #f5c6cb;
+        border-radius: 5px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Upcoming Concerts</h1>
+    <main>
+      <% if (typeof error !== 'undefined' && error === 'insufficient-tickets') {
+      %>
+      <div class="notification">
+        <p>Buying tickets failed: Insufficient tickets available.</p>
+      </div>
+      <% } %>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Event Date</th>
+            <th>Tickets Available</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% events.forEach(event => { %>
+          <tr>
+            <td><%= event.name %></td>
+            <td><%= event.event_date %></td>
+            <td><%= event.tickets_available %> tickets available</td>
+            <td>
+              <% if (event.tickets_available >0) { %>
+              <form action="/buy-tickets/<%= event.id %>" method="GET">
+                <button type="submit" class="buy-button">Buy Tickets</button>
+              </form>
+              <% } else { %>
+              <span class="text-red-500 font-semibold">Sold out</span>
+              <% } %>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <% if (events.length === 0) { %>
+      <p class="no-events">No events are currently available.</p>
+      <% } %>
+    </main>
+  </body>
+</html>

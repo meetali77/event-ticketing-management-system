@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organiser Home Page</title>
+    <link rel="stylesheet" href="organiser.css">
+
+</head>
+<body class="bg-slate-200">
+    <!-- Dynamically render the site name and description -->
+    <h1 id="site-title" class="text-black"><%= site_name %></h1>
+    <p id="site-description" class="text-gray-600"><%= site_description %></p>
+</br>
+
+<!-- Display the authenticated event manager's name -->
+<!-- Manager Info Section -->
+<section class="manager-info">
+    <% if (typeof manager !== 'undefined' && manager) { %>
+        <p class="text-gray-600">Event Manager: <%= manager.name %></p>
+    <% } else { %>
+        <p class="text-gray-600">Event Manager: Not Assigned</p>
+    <% } %>
+</section>
+        
+<!-- Dynamically render events -->
+    <div class="events-container">
+        <% events.forEach(event => { %>
+            <div class="event-container">
+                <div class="event-info">
+                    <h2><strong>Event Name:</strong> <%= event.name %></h2>
+                    <p><strong>Event Details:</strong> <%= event.description %></p>
+                    <p><strong>Event Date:</strong> <%= event.event_date %></p>
+                    <p><strong>Tickets Available:</strong> <%= event.tickets_available %></p>
+                    <p><strong>Ticket Price:</strong> $<%= event.ticket_price %></p>
+                    <p><strong>Venue:</strong> <%= event.venue %></p>
+
+                     <!-- Container for buttons to align them side by side -->
+                    <div class="button-container">
+                       <!-- Delete Button -->
+                       <form action="/delete-event/<%= event.id %>" method="POST">
+                            <button type="submit">Delete Event</button>
+                       </form>
+                       <!-- Edit Button -->
+                       <a href="/edit-event/<%= event.id %>">
+                            <button type="button">Edit Event</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <h2>Published Events</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Event Details</th>
+                <th>Date of Publish</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% events.forEach(event => { %>
+                <% if (event.is_published) { %> <!-- Only show published events -->
+                    <tr>
+                        <td><%= event.name %></td>
+                        <td><%= event.description %></td>
+                        <td><%= event.publish_date %></td>
+                        <td>
+                            <div class="button-container">
+                                <!-- Unpublish Button -->
+                                <form action="/unpublish-event/<%= event.id %>" method="POST">
+                                    <button type="submit">Unpublish</button>
+                                </form>
+                                <!-- Delete Button -->
+                                <form action="/delete-published-event/<%= event.id %>" method="POST">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <% } %>
+            <% }) %>
+        </tbody>
+    </table>
+    
+    <h2>Unpublished Events</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Event Details</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% events.forEach(event => { %>
+                <% if (!event.is_published) { %> <!-- Only show unpublished events -->
+                    <tr>
+                        <td><%= event.name %></td>
+                        <td><%= event.description %></td>
+                        <td>
+                            <form method="POST" action="/organiser/publish">
+                                <input type="hidden" name="id" value="<%= event.id %>">
+                                <button type="submit">Publish</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <!-- More events here -->
+
+    <div class="button-container"> 
+        <a href="site-setting.html">
+            <button type="button" class="text-white bg-gradient-to-r 
+                                     from-black
+                                     to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none
+                                     focus:ring-cyan-900
+                                     dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"> Site Settings Page </button>
+        </a>
+        <a href="create-event.html">
+            <button type="button" class="text-white bg-gradient-to-r 
+                                     from-black
+                                     to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none
+                                     focus:ring-cyan-900
+                                     dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">  Create New Event </button>
+        </a>
+        <a href="/login">
+            <button type="button" class="text-white bg-gradient-to-r 
+                                         from-black
+                                         to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none
+                                         focus:ring-cyan-900
+                                         dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"> Log Out </button>
+        </a>
+    </div>
+    </br>
+</body>
+</html>
