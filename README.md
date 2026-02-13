@@ -158,3 +158,11 @@ npm (Node Package Manager)
 - [ ] Implement payment gateway integration (Stripe/PayPal)
 - [ ] Add QR code generation for tickets
 - [ ] Rate limiting on authentication endpoints
+
+## Key Learnings
+
+- Understanding **ACID properties** in transactional systems
+- Implementing **database-level locking** for concurrency
+- Building **role-based authentication** with sessions
+- Designing **RESTful APIs** following MVC patterns
+- Handling **edge cases** in booking systems
