@@ -1,8 +1,8 @@
-#Event Ticketing Management Platform
+# Event Ticketing Management Platform
 Production-grade event booking system with transaction-based concurrency control, role-based authentication, and comprehensive event lifecycle management.
 ##Project Overview
 Full-stack ticketing platform enabling event organizers to create, manage, and publish events while providing attendees with a secure booking interface. The system implements database transactions to prevent race conditions during concurrent ticket purchases—a critical requirement for real-world booking systems.
-##Key Features
+## Key Features
 For Event Organizers (Managers)
 
 Secure Authentication: Password-protected login with express-session management
@@ -20,7 +20,7 @@ Transaction Safety: Atomic booking operations prevent overbooking
 Purchase Confirmation: Success/failure pages with clear user feedback
 Inventory Validation: Real-time checks prevent booking unavailable tickets
 
-##Advanced Technical Features
+## Advanced Technical Features
 
 Database Transactions: BEGIN/COMMIT/ROLLBACK for atomic operations
 Concurrency Control: Prevents race conditions in multi-user scenarios
@@ -29,7 +29,7 @@ Input Validation: Server-side validation for all form inputs
 Error Handling: Comprehensive error catching and user-friendly messages
 Foreign Key Constraints: Enforced referential integrity
 
-##Tech Stack
+## Tech Stack
 Backend:
 
 Node.js
@@ -43,7 +43,7 @@ EJS templating engine
 HTML5/CSS3
 Vanilla JavaScript
 
-##API Endpoints
+## API Endpoints
 Authentication
 
 GET /login - Display login page
@@ -81,33 +81,33 @@ GET /users/list-users - List all users (example route)
 Total: 29 API endpoints
 🔒 Security Features
 
-Session-Based Authentication
+## Session-Based Authentication
 
 express-session middleware
 Server-side session storage
 Protected manager routes
 
 
-Input Validation
+## Input Validation
 
 Server-side validation for all forms
 Type checking (parseInt, parseFloat)
 Required field validation
 
 
-SQL Injection Prevention
+## SQL Injection Prevention
 
 Parameterized queries throughout
 No string concatenation in SQL
 
 
-Session Security
+## Session Security
 
 Secret key configuration
 Secure cookie settings (configurable for HTTPS)
 
 
-Authorization
+## Authorization
 
 Route-level access control
 Session-based role checking
@@ -121,7 +121,7 @@ Workshop/class booking systems
 Resource scheduling (meeting rooms, equipment)
 Limited inventory e-commerce
 
-##Why Transaction Handling Matters
+## Why Transaction Handling Matters
 In any system handling limited resources (tickets, seats, inventory), race conditions are a real concern:
 
 Without transactions: Two simultaneous bookings for the last ticket both succeed → overbooking
@@ -142,14 +142,14 @@ Concurrency: Race condition prevention, atomic operations
 Error Handling: Graceful degradation, user feedback
 MVC Architecture: Separation of concerns, code organization
 
-##Engineering Principles Applied
+## Engineering Principles Applied
 
 ACID Compliance: Atomicity, Consistency, Isolation, Durability
 DRY Principle: Code reusability through functions and routes
 Security First: Input validation, SQL injection prevention
 User Experience: Clear feedback, error messages, confirmation pages
 
-##Metrics
+## Metrics
 
 Lines of Code: 829 (backend JavaScript)
 API Endpoints: 29
@@ -158,7 +158,7 @@ Transaction Handlers: 1 (critical booking path)
 Protected Routes: 8 (manager-only)
 Public Routes: 10 (attendee access)
 
-##Known Limitations
+## Known Limitations
 
 Password Security: Currently stores passwords in plain text. Production version should use bcrypt/scrypt hashing.
 No Rate Limiting: Vulnerable to brute force attacks on login.
