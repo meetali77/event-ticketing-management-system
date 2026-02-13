@@ -142,14 +142,13 @@ npm (Node Package Manager)
 
 #### Final Steps ####
 * To run the project Terminal 
-1. rm -rf node_modules,	Clean slate (remove corrupted packages)
-2. npm install,	Install all required dependencies
-3. npm install express,	Ensure Express is installed
-4. npm run build-db-win,	Run DB setup script(for Windows)
-5. npm run start
-6. To access organiser page, username:jane.eyre@gmail.com, 
+1. npm install,	Install all required dependencies
+2. npm install express,	Ensure Express is installed
+3. npm run build-db-win,	Run DB setup script(for Windows)
+4. npm run start
+5. To access organiser page, username:jane.eyre@gmail.com, 
                              password:newpassword123
-7. To access the site-setting page, please remove the ".html" at the end to access it
+6. To access the site-setting page, please remove the ".html" at the end to access it
 
 ## Future Enhancements
 
