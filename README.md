@@ -150,3 +150,12 @@ npm (Node Package Manager)
 6. To access organiser page, username:jane.eyre@gmail.com, 
                              password:newpassword123
 7. To access the site-setting page, please remove the ".html" at the end to access it
+
+## Future Enhancements
+
+- [ ] Implement bcrypt password hashing for production security
+- [ ] Add email confirmation for bookings
+- [ ] Migrate to PostgreSQL for production scalability
+- [ ] Implement payment gateway integration (Stripe/PayPal)
+- [ ] Add QR code generation for tickets
+- [ ] Rate limiting on authentication endpoints
