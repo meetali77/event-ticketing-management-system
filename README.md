@@ -94,13 +94,13 @@ Database-level locking via transactions ensures only one booking completes when 
 ## Database Schema
 ## Tables
 managers
-sqlCREATE TABLE managers (
+    CREATE TABLE managers (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     password TEXT NOT NULL
 );
 events
-sqlCREATE TABLE events (
+    CREATE TABLE events (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     description TEXT,
@@ -112,7 +112,7 @@ sqlCREATE TABLE events (
     is_published INTEGER DEFAULT 0
 );
 bookings
-sqlCREATE TABLE bookings (
+    CREATE TABLE bookings (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     event_id INTEGER NOT NULL,
     attendee_name TEXT NOT NULL,
@@ -121,7 +121,7 @@ sqlCREATE TABLE bookings (
     FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE
 );
 site_settings
-sqlCREATE TABLE site_settings (
+    CREATE TABLE site_settings (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     site_name TEXT NOT NULL,
     site_description TEXT
